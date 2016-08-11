@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello React</title>
+    <script src="./build/react.js"></script>
+    <script src="./build/react-dom.js"></script>
+    <script src="./build/browser.min.js"></script>
+</head>
+<body>
+<div id="helloWorld"></div>
+<script type="text/babel">
+    let ReactHello = React.createClass({
+       render: function () {
+           return (
+                   <h1>Hello World!</h1>
+           )
+       }
+    });
+    ReactDOM.render(
+            <ReactHello />,
+            document.getElementById('helloWorld'));
+</script>
+
+</body>
+</html>
