@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>react-component-demo</title>
+    <script src="./node_modules/react/dist/react.min.js"></script>
+    <script src="./node_modules/react-dom/dist/react-dom.min.js"></script>
+    <script src="./node_modules/babel-standalone/babel.min.js"></script>
+
+</head>
+<body>
+<div id="example"></div>
+<div id="example1"></div>
+<div id="example2"></div>
+<div id="example3"></div>
+<script type="text/babel">
+    var HelloMessage=React.createClass({
+       render:function(){
+           return <h1>hello {this.props.name}</h1>
+       }
+    });
+    ReactDOM.render(
+     <HelloMessage name="ZhuoYue"/>,
+    document.getElementById('example')
+            );
+
+
+    var NodesList = React.createClass({
+       render:function () {
+           return(<ol>
+               {
+
+               React.Children.map(this.props.children,function (child) {
+                   return <li>{child}</li>;
+               })
+               }
+           </ol>);
+       }
+    });
+
+    ReactDOM.render(
+             <NodesList>
+                 <span>hello</span>
+                 <span>world</span>
+             </NodesList> ,
+            document.getElementById("example1")
+    );
+
+    let MyTitle=React.createClass({
+        propTypes:{
+            title:React.PropTypes.string.isRequired,
+        },
+        render:function(){
+            return<h1>{this.props.title}</h1>;
+        }
+    });
+
+    var data="属性必须是字符串";
+    ReactDOM.render(
+            <MyTitle title={data}/>,
+                document.getElementById("example2")
+    );
+
+
+
+    let MyOwnTitle=React.createClass({
+        getDefaultProps: function () {
+            return {
+                title: 'get DefaultProps'
+            };
+        },
+        render:function(){
+            return <h1>{this.props.title}</h1>
+        }
+    });
+    ReactDOM.render(
+            <MyOwnTitle title="我要覆盖组件默认属性"/>,
+            document.getElementById("example3")
+    )
+
+
+</script>
+
+</body>
+</html>
