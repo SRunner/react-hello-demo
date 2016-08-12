@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>get-real-dom-demo</title>
+    <script src="./node_modules/react/dist/react.min.js"></script>
+    <script src="./node_modules/react-dom/dist/react-dom.min.js"></script>
+    <script src="./node_modules/babel-standalone/babel.min.js"></script>
+
+</head>
+<body>
+<div id="example"></div>
+<div id="example1"></div>
+<div id="example2"></div>
+<script type="text/babel">
+    let MyComponent=React.createClass({
+        handClick:function(){
+            this.refs.myTextInput.focus();
+        },
+        render:function () {
+            return(
+                    <div>
+                        <input type="text" ref="myTextInput"/>
+                        <input type="button" value="Focus on text" onClick={this.handClick}/>
+                    </div>
+            );
+        }
+    });
+
+    ReactDOM.render(<MyComponent />,
+    document.getElementById('example')
+    );
+
+
+
+    let LikeButton = React.createClass({
+        getInitialState: function () {
+            return {liked: false};
+        },
+        handleClick: function (event) {
+            this.setState({liked: !this.state.liked})
+        },
+        render: function () {
+            var text = this.state.liked ? 'like' : 'do not like';
+            return (
+                    <p onClick={this.handleClick}>
+                        you {text} this ,click this text;
+                    </p>
+            );
+        }
+    });
+    ReactDOM.render(<LikeButton/>,
+            document.getElementById('example1')
+    );
+
+    let Input=React.createClass({
+        getInitialState:function () {
+            return {value:'hello'};
+        },
+        handleChange:function(event){
+            this.setState({value:event.target.value});
+        },
+        render:function(){
+            var value=this.state.value;
+            return(
+                    <div>
+                    <input type="text" value={value} onChange={this.handleChange}/>
+                    <p>{value}</p>
+                    </div>
+                );
+        }
+    });
+    ReactDOM.render(<Input />,document.getElementById("example2"))
+
+
+
+
+
+</script>
+</body>
+</html>
