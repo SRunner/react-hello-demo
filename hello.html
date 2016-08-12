@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>react</title>
+    <!-- React的核心库 -->
+    <script src="node_modules/react/dist/react.min.js"></script>
+    <!-- React提供与DOM相关功能的库 -->
+    <script src="node_modules/react-dom/dist/react-dom.min.js"></script>
+    <!-- Browser.js 的作用是将 JSX 语法转为 JavaScript 语法，这一步很消耗时间，实际上线的时候，应该将它放到服务器完成 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+</head>
+<body>
+<div id="example" style="background-color: aquamarine"></div>
+<div id="other" style="background-color: aquamarine"></div>
+<script type="text/babel" src="hello.js"></script>
+</body>
+</html>
